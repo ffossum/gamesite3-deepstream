@@ -1,0 +1,18 @@
+{
+  "name": "gamesite3-deepstream",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "prettier": "prettier --write --single-quote --trailing-comma es5 *.js src/**/*.js",
+    "test": "prettier --list-different --single-quote --trailing-comma es5 *.js src/**/*.js"
+  },
+  "devDependencies": {
+    "prettier": "^1.3.1"
+  },
+  "dependencies": {
+    "cookie": "^0.3.1",
+    "deepstream.io": "^2.2.2",
+    "jsonwebtoken": "^7.4.1"
+  }
+}
