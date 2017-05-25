@@ -1,9 +1,8 @@
 const jwt = require('jsonwebtoken');
-const { jwtSecret } = require('./env');
 
-function verifyJwt(token) {
+function verifyJwt(token, secret) {
   return new Promise((resolve, reject) => {
-    jwt.verifyAsync(token, jwtSecret, (err, decoded) => {
+    jwt.verify(token, secret, (err, decoded) => {
       if (err) {
         reject(err);
       }

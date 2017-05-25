@@ -1,12 +1,12 @@
 const EventEmitter = require('events');
 const { parse } = require('cookie');
 const { verifyJwt } = require('./jwt');
-const { serverPassword } = require('./env');
+const { jwtSecret, serverPassword } = require('./env');
 
 async function getClientId(connectionData) {
   const cookies = parse(connectionData.headers.cookie || '');
   try {
-    const decoded = await verifyJwt(cookies.jwt);
+    const decoded = await verifyJwt(cookies.jwt, jwtSecret);
     return decoded.id;
   } catch (err) {
     return;
