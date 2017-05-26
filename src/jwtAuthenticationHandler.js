@@ -17,15 +17,17 @@ class JwtAuthenticationHandler extends EventEmitter {
     super();
 
     this.isValidUser = async (connectionData, authData = {}, callback) => {
-      const clientId = authData.password === serverPassword
-        ? authData.id
-        : await getClientId(connectionData);
-
-      callback(true, { username: clientId });
+      const { username, password } = authData;
+      if (username && password) {
+        callback(password === serverPassword, { username });
+      } else {
+        callback(true, {
+          username: await getClientId(jwtSecret, connectionData),
+        });
+      }
     };
 
     this.isReady = true;
-    this.emit('ready');
   }
 }
 
