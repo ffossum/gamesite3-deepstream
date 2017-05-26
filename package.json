@@ -6,8 +6,8 @@
   "scripts": {
     "coverage": "jest --coverage --collectCoverageFrom=\"src/**.js\"",
     "jest": "jest",
-    "prettier": "prettier --write --single-quote --trailing-comma es5 *.js src/**.js",
-    "test": "prettier --list-different --single-quote --trailing-comma es5 *.js src/**.js && npm run coverage"
+    "prettier": "prettier --write --single-quote --trailing-comma es5 \"*.js\" \"src/**.js\"",
+    "test": "prettier --list-different --single-quote --trailing-comma es5 \"*.js\" \"src/**.js\" && npm run coverage"
   },
   "devDependencies": {
     "jest": "^20.0.4",
