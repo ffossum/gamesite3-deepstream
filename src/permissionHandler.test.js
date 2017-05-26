@@ -2,15 +2,16 @@ const PermissionHandler = require('./permissionHandler');
 
 describe('permission handler', () => {
   it('gives permission to the server', () => {
-    const handler = new PermissionHandler();
+    const serverUsername = 'server username';
+    const handler = new PermissionHandler(serverUsername);
 
     const callback = jest.fn();
-    handler.canPerformAction('node server', 'message', callback);
+    handler.canPerformAction(serverUsername, 'message', callback);
 
     expect(callback).toHaveBeenCalledWith(null, true);
   });
 
-  it('clients are not allowed to trigger events, ...for now', () => {
+  it('clients are not allowed to perform actions, ...for now', () => {
     const handler = new PermissionHandler();
 
     const callback = jest.fn();
