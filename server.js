@@ -1,21 +1,15 @@
 const Deepstream = require('deepstream.io');
 const JwtAuthenticationHandler = require('./src/jwtAuthenticationHandler');
 const PermissionHandler = require('./src/permissionHandler');
-const { assertEnv, getEnv } = require('./src/environmentUtil');
 
-const config = require('dotenv');
-config.load();
+require('dotenv-safe').load();
 
-const envVariables = [
-  'JWT_SECRET',
-  'SERVER_USERNAME',
-  'SERVER_PASSWORD',
-  'DEEPSTREAM_PORT',
-];
-assertEnv(envVariables);
-const [jwtSecret, serverUsername, serverPassword, port] = getEnv(envVariables);
+const jwtSecret = process.env.JWT_SECRET;
+const serverUsername = process.env.SERVER_USERNAME;
+const serverPassword = process.env.SERVER_PASSWORD;
+const deepstreamPort = process.env.DEEPSTREAM_PORT;
 
-const server = new Deepstream({ port });
+const server = new Deepstream({ port: deepstreamPort });
 server.set(
   'authenticationHandler',
   new JwtAuthenticationHandler(jwtSecret, serverPassword)
