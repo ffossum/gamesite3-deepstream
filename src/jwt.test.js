@@ -1,4 +1,4 @@
-const { verifyJwt } = require('./jwt');
+const { signJwt, verifyJwt } = require('./jwt');
 
 describe('jwt', () => {
   test('decodes valid token', async () => {
@@ -28,5 +28,23 @@ describe('jwt', () => {
     expect(verifyJwt(token, secret)).rejects.toMatchObject({
       message: 'invalid signature',
     });
+  });
+
+  test('payload can be signed into a token', async () => {
+    const secret = 'secret';
+    const payload = { id: 'identity' };
+
+    const token = await signJwt(payload, secret);
+    expect(token).toBeDefined();
+    expect(typeof token).toBe('string');
+  });
+
+  test('signed token can be decoded', async () => {
+    const secret = 'secret';
+    const payload = { id: 'identity' };
+    const token = await signJwt(payload, secret);
+
+    const decoded = await verifyJwt(token, secret);
+    expect(decoded.id).toEqual('identity');
   });
 });
