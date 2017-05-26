@@ -1,9 +1,8 @@
 const EventEmitter = require('events');
 const { parse } = require('cookie');
 const { verifyJwt } = require('./jwt');
-const { jwtSecret, serverPassword } = require('./env');
 
-async function getClientId(connectionData) {
+async function getClientId(jwtSecret, connectionData) {
   const cookies = parse(connectionData.headers.cookie || '');
   try {
     const decoded = await verifyJwt(cookies.jwt, jwtSecret);
@@ -14,17 +13,19 @@ async function getClientId(connectionData) {
 }
 
 class JwtAuthenticationHandler extends EventEmitter {
-  constructor() {
+  constructor(jwtSecret, serverPassword) {
     super();
+
+    this.isValidUser = async (connectionData, authData = {}, callback) => {
+      const clientId = authData.password === serverPassword
+        ? authData.id
+        : await getClientId(connectionData);
+
+      callback(true, { username: clientId });
+    };
+
     this.isReady = true;
     this.emit('ready');
-  }
-  async isValidUser(connectionData, authData = {}, callback) {
-    const clientId = authData.password === serverPassword
-      ? authData.id
-      : await getClientId(connectionData);
-
-    callback(true, { username: clientId });
   }
 }
 

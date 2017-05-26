@@ -16,6 +16,7 @@
   "dependencies": {
     "cookie": "^0.3.1",
     "deepstream.io": "^2.2.2",
+    "dotenv": "^4.0.0",
     "jsonwebtoken": "^7.4.1"
   }
 }
