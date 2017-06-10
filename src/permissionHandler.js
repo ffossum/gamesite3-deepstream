@@ -21,6 +21,11 @@ class PermissionHandler extends EventEmitter {
         }
       }
 
+      if (message.topic === 'P' && message.action === 'REQ') {
+        // Allow all rpc requests for now
+        return callback(null, true);
+      }
+
       callback(null, false);
     };
 
