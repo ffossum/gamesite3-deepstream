@@ -10,7 +10,10 @@ class PermissionHandler extends EventEmitter {
         return callback(null, true);
       }
 
-      if (message.topic === 'E' && message.action === 'S') {
+      if (
+        message.topic === 'E' &&
+        (message.action === 'S' || message.action === 'US')
+      ) {
         return callback(null, true);
       }
 
