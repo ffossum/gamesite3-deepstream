@@ -476,19 +476,26 @@ deep-is@~0.1.3:
   version "0.1.3"
   resolved "https://registry.yarnpkg.com/deep-is/-/deep-is-0.1.3.tgz#b369d6fb5dbc13eecf524f91b070feedc357cf34"
 
-deepstream.io@^2.3.6:
-  version "2.3.6"
-  resolved "https://registry.yarnpkg.com/deepstream.io/-/deepstream.io-2.3.6.tgz#97cef52be7d9e7a73b5699dc519c141fb52d5522"
+deepstream.io-service@latest:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/deepstream.io-service/-/deepstream.io-service-0.1.1.tgz#6fcf5d7f668fc94f4dc62cf2eca38f5c96e3399c"
+  dependencies:
+    colors "^1.1.2"
+
+deepstream.io@^2.4.0:
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/deepstream.io/-/deepstream.io-2.4.0.tgz#6e6fb7974d033407338c3392a992494b326c6f04"
   dependencies:
     adm-zip "^0.4.7"
     colors "^1.1.2"
     commander "^2.9.0"
+    deepstream.io-service latest
     glob "^7.1.1"
     javascript-state-machine "3.0.0-rc.1"
     js-yaml "^3.8.1"
     mkdirp "^0.5.1"
     needle "^1.4.5"
-    uws "https://github.com/deepstreamIO/uws-dependency.git#v0.12.0"
+    uws "git+https://github.com/deepstreamIO/uws-dependency.git#v0.12.0"
 
 default-require-extensions@^1.0.0:
   version "1.0.0"
@@ -2001,9 +2008,9 @@ uuid@^3.0.0:
   version "3.0.1"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.0.1.tgz#6544bba2dfda8c1cf17e629a3a305e2bb1fee6c1"
 
-"uws@https://github.com/deepstreamIO/uws-dependency.git#v0.12.0":
+"uws@git+https://github.com/deepstreamIO/uws-dependency.git#v0.12.0":
   version "0.12.0"
-  resolved "https://github.com/deepstreamIO/uws-dependency.git#5a515f964d0032059045f3a5b455a45faa641bd8"
+  resolved "git+https://github.com/deepstreamIO/uws-dependency.git#5a515f964d0032059045f3a5b455a45faa641bd8"
 
 validate-npm-package-license@^3.0.1:
   version "3.0.1"
