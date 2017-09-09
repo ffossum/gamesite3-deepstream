@@ -15,9 +15,9 @@ describe('jwt', () => {
       'ayJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ';
     const secret = 'secret';
 
-    expect(verifyJwt(token, secret)).rejects.toMatchObject({
-      message: 'invalid token',
-    });
+    expect(verifyJwt(token, secret)).rejects.toMatchObject(
+      new Error('invalid token')
+    );
   });
 
   test('rejects invalid secret', () => {
@@ -25,9 +25,9 @@ describe('jwt', () => {
       'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiYWRtaW4iOnRydWV9.TJVA95OrM7E2cBab30RMHrHDcEfxjoYZgeFONFh7HgQ';
     const secret = 'hunter2';
 
-    expect(verifyJwt(token, secret)).rejects.toMatchObject({
-      message: 'invalid signature',
-    });
+    expect(verifyJwt(token, secret)).rejects.toMatchObject(
+      new Error('invalid signature')
+    );
   });
 
   test('payload can be signed into a token', async () => {
