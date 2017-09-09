@@ -7,9 +7,8 @@ require('dotenv-safe').load();
 const jwtSecret = process.env.JWT_SECRET;
 const serverUsername = process.env.SERVER_USERNAME;
 const serverPassword = process.env.SERVER_PASSWORD;
-const deepstreamPort = process.env.DEEPSTREAM_PORT;
 
-const server = new Deepstream({ port: deepstreamPort });
+const server = new Deepstream('config.yml');
 server.set(
   'authenticationHandler',
   new JwtAuthenticationHandler(jwtSecret, serverPassword)
