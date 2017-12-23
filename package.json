@@ -10,7 +10,7 @@
     "test": "prettier --list-different --single-quote --trailing-comma es5 \"*.js\" \"src/**/*.js\" && npm run coverage"
   },
   "devDependencies": {
-    "jest": "^21.0.2",
+    "jest": "^22.0.4",
     "prettier": "^1.6.1"
   },
   "dependencies": {
